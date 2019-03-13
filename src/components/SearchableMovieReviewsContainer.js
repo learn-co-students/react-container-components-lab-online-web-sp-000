@@ -8,7 +8,7 @@ const URL = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?'
 
 export default class SearchableMovieReviewsContainer extends Component {
 
-  state = { reviews: [] }
+  state = { reviews: [], searchTerm: '' }
 
   performSearch = (query) => {
     let url = URL + query
