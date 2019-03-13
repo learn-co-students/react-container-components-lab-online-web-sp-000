@@ -4,14 +4,15 @@ import MovieReviews from './MovieReviews'
 
 const NYT_API_KEY = 'UdGo4KDjMj6cSni6xuvXUQK2tKYtSAl6';
 const URL = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?'
-  + `api-key=${NYT_API_KEY}`+ '&query=';
+  + `api-key=${NYT_API_KEY}` + '&query=';
 
 export default class SearchableMovieReviewsContainer extends Component {
 
   state = { reviews: [], searchTerm: '' }
 
-  performSearch = (query) => {
-    let url = URL + query
+  performSearch = (event) => {
+    event.preventDefault()
+    let url = URL + this.state.searchTerm
     console.log(url);
     fetch(url)
       .then(res => res.json())
@@ -20,33 +21,19 @@ export default class SearchableMovieReviewsContainer extends Component {
       });
   }
 
-  render() {
-    return <div className="searchable-movie-reviews">
-      <SearchForm performSearch={this.performSearch} />
-      <MovieReviews reviews={this.state.reviews} />
-    </div>
-  }
-}
-
-
-class SearchForm extends Component {
-
-  state = { query: 'moonlight' }
-
-  handleSubmit = (e) => {
-    e.preventDefault()
-    this.props.performSearch(this.state.query)
-  }
-
   handleChange(event) {
     event.persist()
-    this.setState({ query: event.target.value })
+    this.setState({ searchTerm: event.target.value })
   }
 
+
   render() {
-    return <form onSubmit={(e) => this.handleSubmit(e)}>
-      <input type="text" value={this.state.query} onChange={(e) => this.handleChange(e)} />
-      <input type="submit" />
-    </form>
+    return <div className="searchable-movie-reviews">
+      <form onSubmit={(e) => this.performSearch(e)}>
+        <input type="text" value={this.state.searchTerm} onChange={(e) => this.handleChange(e)} />
+        <input type="submit" />
+      </form>
+      <MovieReviews reviews={this.state.reviews} />
+    </div>
   }
 }
