@@ -14,6 +14,6 @@ export default class SearchableMovieReviewsContainer extends Component {
     //this.state = { :  } 
   };
   render() {
-    return <div></div>
+    return <div className="searchable-movie-reviews"></div>
   }
 }
