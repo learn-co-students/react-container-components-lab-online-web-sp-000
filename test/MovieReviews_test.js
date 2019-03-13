@@ -31,7 +31,6 @@ describe('<MovieReviews />', () => {
   });
 
   it('should render all the reviews', () => {
-    debugger
     expect(wrapper.find('.review').length).to.equal(testReviews.length);
   });
 });
