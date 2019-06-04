@@ -11,7 +11,7 @@ separate the data and presentation layers.
 
 ## Oh, To Be a Critic!
 
-![Thumbs Down](https://s3.amazonaws.com/ezmiller/public/images/thumbs-down-kevin.gif)
+<!-- ![Thumbs Down](https://s3.amazonaws.com/ezmiller/public/images/thumbs-down-kevin.gif) -->
 
 Movie critics can be harsh, but it's a blast to read what they write. For this
 lab, imagine that you've been hired to work on a web application devoted to
