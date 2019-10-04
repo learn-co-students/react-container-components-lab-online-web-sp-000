@@ -1,52 +1,49 @@
 import React, { Component } from 'react';
 import 'isomorphic-fetch';
-import MovieReviews from './MovieReviews'
 
-const NYT_API_KEY = '9pIZyjTO9MOaZoXnUqv8GZN5dCAtU0U0';
-const URL = 'https://api.nytimes.com/svc/movies/v2/reviews/all.json?'
-            + `api-key=${NYT_API_KEY}`;
+import MovieReviews from './MovieReviews';
 
-// Code SearchableMovieReviewsContainer Here
-class SearchableMovieReviewsContainer extends React.Component {
-    state = {
-        reviews: [],
-        searchTerm: ""
-    }
+const NYT_API_KEY = ':)';
+const BASE_URL =
+  'https://api.nytimes.com/svc/movies/v2/reviews/search.json?' +
+  `api-key=${NYT_API_KEY}&query=`;
 
-    render () {
-        return(
-            <div className="searchable-movie-reviews">
-                <form onSubmit={event => this.handleSubmit(event)}>
-                    <input type="text" id="searchTerm" value={this.state.searchTerm} onChange={this.handleChange}></input>
-                    <input type="submit"></input>
-                </form>
-                <MovieReviews reviews={this.state.reviews} />
-            </div>
-        )
-    }
+class SearchableMovieReviewsContainer extends Component {
+  state = {
+    searchTerm: '',
+    reviews: []
+  };
 
-    handleChange = (event) => {
-        event.persist();
-        this.setState({
-            [event.target.id]: event.target.value
-        })
-    }
+  handleSearchInputChange = event =>
+    this.setState({ searchTerm: event.target.value });
 
-    handleSubmit = (event) => {
-        event.preventDefault();
-        this.fetchReviews();
-    }
+  handleSubmit = event => {
+    event.preventDefault();
 
-    fetchReviews = () => {
-        fetch(URL + '&query=' + this.state.searchTerm)
-        .then(response => response.json())
-        .then(data => {
-            this.setState({
-                reviews: data.results
-            })
-        })
-    }
+    fetch(BASE_URL.concat(this.state.searchTerm))
+      .then(res => res.json())
+      .then(res => this.setState({ reviews: res.results }));
+  };
 
+  render() {
+    return (
+      <div className="searchable-movie-reviews">
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="search-input">Search Movie Reviews</label>
+          <input
+            id="search-input"
+            type="text"
+            style={{ width: 300 }}
+            onChange={this.handleSearchInputChange}
+          />
+          <button type="submit">Submit</button>
+        </form>
+        {typeof this.state.reviews === 'object' &&
+          this.state.reviews.length > 0 && <h2>Movie Review By Search:</h2>}
+        <MovieReviews reviews={this.state.reviews} />
+      </div>
+    );
+  }
 }
 
 export default SearchableMovieReviewsContainer;
