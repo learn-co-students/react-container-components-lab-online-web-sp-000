@@ -42,11 +42,8 @@ class SearchableMovieReviewsContainer extends Component {
           />
           <button type='submit'>Search</button>
         </form>
-
-        {/* {this.state.reviews.map((review) => (
-          <MovieReviews display_title={review.display_title} />
-        ))} */}
       </div>
+      <MovieReviews reviews={this.state.reviews} />
     );
   }
 }
