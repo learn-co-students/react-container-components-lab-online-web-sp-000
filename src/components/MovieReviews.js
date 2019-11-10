@@ -1,11 +1,13 @@
 import React from 'react';
 
 const MovieReviews = ({ reviews }) => {
-  return reviews.map((review) => (
+  return (
     <ul class='review-list'>
-      <li>{review.display_title}</li>
+      {reviews.map((review, idx) => (
+        <li key={idx}>{review.display_title}</li>
+      ))}
     </ul>
-  ));
+  );
 };
 
 export default MovieReviews;
