@@ -2,9 +2,11 @@ import React from 'react';
 
 const MovieReviews = ({ reviews }) => {
   return (
-    <div class='review-list'>
+    <div className='review-list'>
       {reviews.map((review, idx) => (
-        <li key={idx}>{review.summary_short}</li>
+        <li className='review' key={idx}>
+          {review.display_title}
+        </li>
       ))}
     </div>
   );
