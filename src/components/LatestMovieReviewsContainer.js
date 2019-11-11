@@ -22,18 +22,11 @@ export class LatestMovieReviewsContainer extends Component {
       .then(movieData => this.setState({ reviews: movieData.results }));
   }
 
-  renderMovies = () => {
-    return this.state.reviews.map(movie => {
-      return (
-        <MovieReviews movie={movie} key={Math.random()} />
-      )
-    })
-  }
-
   render() {
     return (
       <div className="latest-movie-reviews">
-        {this.renderMovies()}
+        <h1>Latest Reviews</h1>
+        <MovieReviews reviews={this.state.reviews} />
       </div>
     );
   }
