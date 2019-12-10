@@ -28,13 +28,15 @@ export default class SearchableMovieReviewsContainer extends Component {
 
     submitHandler = event => {
         event.preventDefault()
-        
+        debugger
         fetch(URL + `&query=${this.state.searchTerm}`).then(resp => resp.json()).then(data => {
             
             this.setState({
                 reviews: data.results
             })
         })
+
+        this.renderReviews()
        
     }
 
@@ -46,12 +48,11 @@ export default class SearchableMovieReviewsContainer extends Component {
 
 
    renderReviews = () => {
-       
-       if(this.state.reviews.length > 0){
-           return this.state.reviews.map(review => {
-                 < MovieReviews title={review.display_title} author={review.byline} link_url={review.link.url} headline={review.headline} />
-            })
-        }
+        return this.state.reviews.map(review => {
+            return(
+                < MovieReviews title={review.display_title} author={review.byline}  link_url={review.link.url} headline={review.headline} />
+            ) 
+        })
     }
 
     searchFieldCreator() {
@@ -73,6 +74,7 @@ export default class SearchableMovieReviewsContainer extends Component {
         return(
             <div className='searchable-movie-reviews'>
                 {this.searchFieldCreator()}
+                {this.renderReviews()}
             </div>
         )
     }

@@ -27,6 +27,7 @@ export default class LatestMovieReviewsContainer extends Component {
     }
 
     renderReviews = () => {
+        
         return this.state.reviews.map(lmr => {
             
             return(
@@ -41,6 +42,7 @@ export default class LatestMovieReviewsContainer extends Component {
         
         return(
             <div className="latest-movie-reviews">
+                
                {this.renderReviews()}
             </div>
         )

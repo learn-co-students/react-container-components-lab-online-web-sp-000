@@ -2,7 +2,6 @@
 import React from 'react'
 
 const MovieReviews = (props) => {
-    // debugger
     return(
         <div className="review-list">
              <div className="review">
