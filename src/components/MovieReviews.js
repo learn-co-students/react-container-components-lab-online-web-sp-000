@@ -1,15 +1,15 @@
 // Code MovieReviews Here
 import React from 'react'
    
-const renderReviews = (movies) => {
-  console.log(movies.movies[0])
+const renderReviews = ({reviews}) => {
+ return reviews.map(({display_title,headline})=><li key={headline} className="review">{display_title}</li>)
 }
 
-const MovieReviews = (movies) =>{
+const MovieReviews = (reviews) =>{
 
     return(
         <div className="review-list">
-          {renderReviews(movies)}
+          {renderReviews(reviews)}
         </div>
     )
 }
