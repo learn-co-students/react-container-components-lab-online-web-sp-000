@@ -16,30 +16,27 @@ export default class SearchableMovieReviewsContainer extends Component {
         }
     }
 
-    componentDidMount() {
-        if(this.state.searchTerm !== "") {
-            fetch(URL + `&query=${this.state.searchTerm}`)
+    handleChange = (event) => {
+        this.setState({
+            searchTerm: event.target.value
+        })
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault()
+        fetch(URL + `&query=${this.state.searchTerm}`)
             .then(resp => resp.json())
             .then(obj => {
                 this.setState({
                     reviews: obj.results
                 })
             })
-        }
-    }
-
-    handleSubmit = (event) => {
-        event.preventDefault()
-        console.log("d")
-        this.setState({
-            searchTerm: event.target.value
-        })
     }
 
     render() {
         return(
-            <form className="searchable-movie-reviews">
-                <input type="text" onSubmit={(event) => this.handleSubmit(event)}></input>
+            <form className="searchable-movie-reviews"  onSubmit={this.handleSubmit}>
+                <input className="test" type="text" onChange={(event) => this.handleChange(event)}></input>
                 <MovieReviews movieReviews={this.state.reviews}/>
             </form>
         )
