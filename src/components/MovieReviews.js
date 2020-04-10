@@ -2,11 +2,10 @@ import React from 'react';
 import LatestMovieReviewsContainer from './LatestMovieReviewsContainer'
 import SearchableMovieReviewsContainer from './SearchableMovieReviewsContainer'
 
-const MovieReviews = ({reviews, index}) => ( 
+const MovieReviews = ({reviews}) => ( 
    
-    <div className={'review-list'} >
-        {/* console.log(reviews, "review") */}
-        { reviews.map(review => <LatestMovieReviewsContainer reviews={review.review} key={index} /> )}
+    <div className='review-list' >
+        { reviews.map((review, index) => <div className="review" key={index} /> )}
     </div>
 )
 

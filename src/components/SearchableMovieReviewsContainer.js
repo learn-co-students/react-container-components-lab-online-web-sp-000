@@ -8,7 +8,7 @@ const URL = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?'
 
 export default class SearchableMovieReviewsContainer extends Component {
     state = {
-        reviews: {},
+        reviews: [],
         searchTerm: []
     }
 
@@ -19,14 +19,17 @@ export default class SearchableMovieReviewsContainer extends Component {
             
             this.setState({
             reviews: data,
-            searchTerm: data
+            searchTerm: data.results
             })
         )
     }
 
     render(){
         return(
-           <form className="searchable-movie-reviews" onSubmit={this.fetchData}></form>
+            <div className="searchable-movie-reviews">
+                <form  onSubmit={this.fetchData}></form>
+                <MovieReviews reviews={this.state.reviews}/>
+           </div>
         )
     }
 }
