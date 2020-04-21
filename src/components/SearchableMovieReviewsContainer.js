@@ -11,21 +11,31 @@ export default class SearchableMovieReviews extends Component {
         super();
 
         this.state = {
-            reviews: []
+            reviews: [],
+            searchTerm: ""
         }
     }
 
-    componentDidMount() {
-        fetch(URL)
+    handleSearch = event =>
+    this.setState({ searchTerm: event.target.value });
+
+    handleSubmit = event => {
+        event.preventDefault()
+        fetch(URL.concat(this.state.searchTerm))
         .then(res => res.json())
-        .then(json => this.setState({reviews: json})
-        )
-    }
+        .then(res => this.setState({ reviews: res.results }));
+    };
 
     render() {
         return(
             <div className="searchable-movie-reviews">
-            <MovieReviews movies={this.state.reviews}/>
+            <form onSubmit={this.handleSubmit}>
+            <input
+            id="search-input"
+            onChange={this.handleSearchInputChange}
+            />    
+            </form>
+            <MovieReviews reviews={this.state.reviews}/>
             </div>
         )
     }

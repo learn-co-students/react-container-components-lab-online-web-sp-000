@@ -28,7 +28,7 @@ export default class LatestMovieReviews extends Component {
     render() {
         return(
             <div className="latest-movie-reviews">
-            <MovieReviews movies={this.state.reviews}/>
+            <MovieReviews reviews={this.state.reviews}/>
             </div>
         )
     }
