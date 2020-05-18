@@ -34,7 +34,7 @@ export default class SearchableMovieReviewsContainer extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    document.getElementById("latest-movie-reviews-id").innerHTML = "";
+    document.getElementById("latest-movie-reviews-id").hidden = true;
     fetch(URL + this.state.searchTerm)
     .then(response => response.json())
     .then(jsonizedResponse => this.setState({reviews: jsonizedResponse.results}, () => console.log("SearchedMovies", this.state.reviews)))
@@ -42,3 +42,5 @@ export default class SearchableMovieReviewsContainer extends Component {
   }
 
 }
+
+//.then (document.getElementById("search-input").value = "")
