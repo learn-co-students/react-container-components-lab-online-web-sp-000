@@ -47,4 +47,3 @@ class SearchableMovieReviewsContainer extends Component {
 }
 
 export default SearchableMovieReviewsContainer;
-© 2020 GitHub, Inc.
