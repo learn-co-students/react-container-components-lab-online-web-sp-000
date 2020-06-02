@@ -11,12 +11,20 @@ export default class SearchableMovieReviewsContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            reviews: []
+            reviews: [],
+            searchTerm: ""
         }
     }
 
-    componentDidMount() {
-        fetch(URL)
+    handleChange = (e) => {
+        this.setState({
+            searchTerm: e.target.value
+        })
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault
+        fetch(URL + this.searchTerm)
         .then(res => res.json())
         .then(reviewData => this.setState({ reviews: reviewData }))
     }
@@ -24,6 +32,10 @@ export default class SearchableMovieReviewsContainer extends Component {
     render() {
         return(
             <div className="searchble-movie-reviews">
+                <form onSubmit={this.handleSubmit}>
+                    <input onChange={this.handleChange} value={this.state.search}></input>
+                    <button type='submit'>Search</button>
+                </form>
                 <MovieReviews reviews={this.state.reviews} />
             </div>
         )
