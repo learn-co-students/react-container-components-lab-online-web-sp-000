@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'isomorphic-fetch';
 import MovieReviews from './MovieReviews'
 
-const NYT_API_KEY = 'dGpQ5OmGP2SgfvZimlpCUoF4iOag9qzZ';
+const NYT_API_KEY = 'zNzGssP1OOPtiK1VQG9gCwPcxFWIorRt';
 const URL = 'https://api.nytimes.com/svc/movies/v2/reviews/all.json?'
             + `api-key=${NYT_API_KEY}`;
 
@@ -12,27 +12,35 @@ class LatestMovieReviewsContainer extends Component {
     constructor(){
         super()
         this.state = {
-            movies: []
+            reviews: [{display_title: ""}]
         }
+        
     }
 
     componentDidMount() {
         fetch(URL)
-        .then(response => response.json())
-        .then(object => {
-            this.setState({
-              movies: object.results      
-            })
-            console.log(
-                this.state.movies
+          .then(response => response.json())
+          .then(
+            movieData => this.setState({ reviews: movieData.results })
             )
-        })
+          .catch(function(error) {
+            console.log(error);
+          });
+    }
+
+    componentDidUpdate() {
+        fetch(URL)
+          .then(response => response.json())
+          .then(movieData => this.setState({ reviews: movieData.results }))
+          .catch(function(error) {
+            console.log(error);
+          });
     }
 
     render(){
         return(
-            <div>
-                {/* { this.state.movies.map(movie => <Movie title={movie.title}/>)} */}
+            <div className="latest-movie-reviews">
+                    { <MovieReviews reviews={this.state.reviews}/>}
             </div>
         )
     }
