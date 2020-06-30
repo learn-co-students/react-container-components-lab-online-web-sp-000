@@ -21,6 +21,7 @@ class SearchableMovieReviewsContainer extends Component {
         fetch(BASE_URL + this.state.searchTerm + API_KEY)
             .then(response => response.json())
             .then(json => this.setState({reviews: json.results}))
+            .catch(err => console.log(err))
     }
 
     handleFormChange = event => {
