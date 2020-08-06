@@ -44,7 +44,7 @@ class SearchableMovieReviewsContainer extends Component {
             <h3>Search</h3>
             <input type="text" onChange={this.handleOnChange} />
           </form>
-        <MovieReviews reviews={this.state.reviews} />
+          {this.state.reviews.length > 0 ? <MovieReviews reviews={this.state.reviews} /> : null }
       </div>
     )
   }
