@@ -8,42 +8,30 @@ const URL = 'https://api.nytimes.com/svc/movies/v2/reviews/all.json?'
 
 // Code LatestMovieReviewsContainer Here
 
-export default class LatestMovieReviewsContainer extends Component {
-    
+class LatestMovieReviewsContainer extends Component {
     constructor() {
-        super() 
-
-        this.state = {
-            reviews: []
-        }
+      super();
+  
+      this.state = {
+        reviews: []
+      };
     }
-
-    render() {
-        return(
-            <div className="latest-movie-reviews" >
-                <h2>The Latest Reviews:  </h2>
-                <MovieReviews reviews={this.state.reviews} />
-            </div>
-        )
-    }
-
-
+  
     componentDidMount() {
-        fetch("https://api.nytimes.com/svc/movies/v2/reviews/all.json?api-key=hbq6Mm7jwNLGn4noFkRwHoCIIBElAz2k")
-            .then(res => res.json())
-            .then(response => this.setState({ reviews: response.results })
-        );
-        
-        handleFetch();
+      fetch("https://api.nytimes.com/svc/movies/v2/reviews/all.json?api-key=hbq6Mm7jwNLGn4noFkRwHoCIIBElAz2k")
+        .then(res => res.json())
+        .then(response => this.setState({ reviews: response.results }));
     }
-
-    handleFetch() {
-        
-        const display_title = this.state.reviews.map(
-            x => x.display_title
-        )
-        const short_summary = this.state.reviews.map(
-            x => x.short_summary
-        )  
+  
+    render() {
+      return (
+        <div className="latest-movie-reviews">
+          <h2>The Latest Reviews:</h2>
+          <MovieReviews reviews={this.state.reviews} />
+        </div>
+      );
     }
-}
+  }
+  
+  
+  export default LatestMovieReviewsContainer;
