@@ -23,9 +23,9 @@ export default class SearchableMovieReviewsContainer extends Component {
         )
     }
 
-    componentDidMount() {
-        
-    }
+    // componentDidMount() {
+    //     fetch()
+    // }
 
 
 }
