@@ -11,13 +11,55 @@ constructor(props) {
 super(props)
 
 this.state = {
+    reviews: [],
+    searchTerm:" "
     
 }
 
 
 }
-  componentDidMount() {
-  fetch(URL)
+handleSubmit = (event) => {
+    event.preventDefault()
+   let finalUrl = URL + this.state.searchTerm
+    fetch(finalUrl) 
+    .then(response => response.json())
+    .then(reviewData => this.setState ({reviews: reviewData.results}))
+  
 
+    
+   }
+   handleChange = (event) => {
+    this.setState ({searchTerm: event.target.value})
+
+   }
+  
+
+
+
+  renderReviews = () => {
+
+    return this.state.reviews.map(review => {
+        return(
+            <div> 
+            
+            
+            </div>
+        )
+    })
   }
+  render() {
+      return (
+          <div className = 'searchable-movie-reviews'> 
+          <form onSubmit={this.handleSubmit}>
+          <label htmlFor = "search-input"> Search Reviews </label>
+          <input type="text" id="search-input" onChange={this.handleChange}/>
+          <button type="submit" text="Search"/>
+
+          </form> 
+          <MovieReviews reviews={this.state.reviews}/>
+          
+          </div>
+      )
+  }
+
 }
