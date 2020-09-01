@@ -1,35 +1,49 @@
 import React, { Component } from 'react';
 import 'isomorphic-fetch';
-import MovieReviews from './MovieReviews'
 
-const NYT_API_KEY = 'dGpQ5OmGP2SgfvZimlpCUoF4iOag9qzZ';
-const URL = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?'
-            + `api-key=${NYT_API_KEY}`;
+import MovieReviews from './MovieReviews';
 
-// Code SearchableMovieReviewsContainer Here
+const NYT_API_KEY = 'f98593a095b44546bf4073744b540da0';
+const BASE_URL =
+  'https://api.nytimes.com/svc/movies/v2/reviews/search.json?' +
+  `api-key=${NYT_API_KEY}&query=`;
 
-export default class SearchableMovieReviewsContainer extends React.Component {
+class SearchableMovieReviewsContainer extends Component {
+  state = {
+    searchTerm: '',
+    reviews: []
+  };
 
-    constructor() {
-        super()
-        this.state = {
-            reviews: [],
-            search: ""
-        }
-    }
+  handleSearchInputChange = event =>
+    this.setState({ searchTerm: event.target.value });
 
-    componentDidMount() {
-        fetch(`https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=<${this.state.search}>`+ `api-key=${NYT_API_KEY}`)
-      .then(response => response.json())
-      .then(reviewData => this.setState({ reviews: reviewData.reviews }))
-    }
+  handleSubmit = event => {
+    event.preventDefault();
 
-    render() {
-        return (
-            <input value="Search Movies Here" onChange={this.handleOnChange} />
-            <div className="searchable-movie-reviews">
-                <MovieReviews reviews={this.state.reviews} />
-            </div>
-        )
-    }
+    fetch(BASE_URL.concat(this.state.searchTerm))
+      .then(res => res.json())
+      .then(res => this.setState({ reviews: res.results }));
+  };
+
+  render() {
+    return (
+      <div className="searchable-movie-reviews">
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="search-input">Search Movie Reviews</label>
+          <input
+            id="search-input"
+            type="text"
+            style={{ width: 300 }}
+            onChange={this.handleSearchInputChange}
+          />
+          <button type="submit">Submit</button>
+        </form>
+        {typeof this.state.reviews === 'object' &&
+          this.state.reviews.length > 0 && <h2>Movie Review By Search:</h2>}
+        <MovieReviews reviews={this.state.reviews} />
+      </div>
+    );
+  }
 }
+
+export default SearchableMovieReviewsContainer;
