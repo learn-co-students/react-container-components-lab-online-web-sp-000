@@ -2,7 +2,11 @@
 
 import React from 'react'
 
-const MovieReviews = props => <div className = 'review-list'><div className = 'review'>{props}</div>{console.log(props)}</div>
+const MovieReviews = ({reviews}) => (
+<div className ='review-list'>
+    { reviews.map(review => <div className ='review'>{review.display_title}</div>)}
+</div>
+)
 
 
 export default MovieReviews
