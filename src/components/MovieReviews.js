@@ -10,7 +10,7 @@ const MovieReviews = ({ reviews }) => {
             <ul>
                 {reviews.map(review=> 
                     <div className='review'>
-                        <li>
+                        <li id={review.id}>
                             <h3>{review.headline}</h3>
                             <h4>By: {review.byline}</h4>
                             <p><b>Summary:</b> {review.summary_short}</p>
