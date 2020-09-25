@@ -23,8 +23,7 @@ const Review = ({
 };
 
 const MovieReviews = ({ reviews }) => {
-    let i = 0;
-    // if (reviews.length === 0) throw 'WTF?'
+ 
     return (
         <div className="review-list">
             <ul>
