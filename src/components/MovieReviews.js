@@ -2,12 +2,6 @@
 
 import React from "react";
 
-//const renderReviews = (reviews) => {
-  //  reviews.map(review => {
-    //    <div className="review">{review.headline}</div>
-    //})
-//}
-
 const MovieReviews = (props) => {
 
 
@@ -27,12 +21,11 @@ const MovieReviews = (props) => {
     )
 }
 
-const displayReviews = (review) => {
-    return (
-        <div className="review">
-            {review.headline}
-        </div>
-    )
-}
+// const renderReviews = (reviews) => {
+//     reviews.map(review => {
+//         <div className="review">{review.headline}</div>
+//     })
+// }
+
 
 export default MovieReviews
