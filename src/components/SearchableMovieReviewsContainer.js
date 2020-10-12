@@ -32,6 +32,8 @@ class SearchableMovieReviewsContainer extends Component {
     event.preventDefault();
     this.getReviews(this.state.searchTerm);
   }
+
+  // I liked the solution's formatting of the render method more than mine so I used it after passing the lab with my own
   render() {
     return (
       <div className="searchable-movie-reviews">
