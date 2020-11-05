@@ -9,12 +9,13 @@ const MovieReviews = ({reviews}) => {
 
     return (<div className="review-list">
                 {reviews.map((review, index) => {
+                    //debugger
                     return (
                         <div className="review" key={index}>
-                            <h1>{review.title}</h1>
+                            <h1>{review.display_title}</h1>
                     
                             <h2>{review.headline}</h2>
-                            <p>{review.summary}</p>
+                            <p>{review.summary_short}</p>
                         </div>
                     )
                 })}

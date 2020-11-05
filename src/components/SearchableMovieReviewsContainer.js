@@ -41,7 +41,7 @@ export default class SearchableMovieReviewsContainer extends Component {
                 searchTerm: search
             }
         })
-        fetch(`https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=${event.target.children[0].value}&api-key=${NYT_API_KEY}`).then(resp => resp.json()).then(reviewData => {
+        fetch(`https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=${search}&api-key=${NYT_API_KEY}`).then(resp => resp.json()).then(reviewData => {
             this.setState(previousState => {
                 return {
                     ...previousState,
