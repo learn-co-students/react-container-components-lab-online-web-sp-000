@@ -21,7 +21,6 @@ export default class LatestMovieReviewsContainer extends Component {
         fetch(URL)
         .then(resp => resp.json())
         .then(data => {
-            debugger
             this.setState({
                 reviews: data['results']
             })
@@ -30,7 +29,9 @@ export default class LatestMovieReviewsContainer extends Component {
 
     render(){
         return (
-            <div className="latest-movie-reviews">MovieReviews reviews={this.state.reviews} </div>
+            <div className="latest-movie-reviews"> 
+                <MovieReviews reviews={this.state.reviews} />
+            </div>
         )
     }
 
