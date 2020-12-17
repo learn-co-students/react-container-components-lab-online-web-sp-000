@@ -9,7 +9,7 @@ const MovieReviews = ({ reviews }) => {
         return (
           <div className="review" key={index}>
             <h1>{review.display_title}</h1>
-            <h2>{review.headline}</h2>
+            <h3>{review.headline}</h3>
             <p>{review.summary_short}</p>
           </div>
         )
