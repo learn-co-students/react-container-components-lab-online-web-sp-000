@@ -7,8 +7,8 @@ const MovieReviews = props => {
 
   return (
     <div className="review-list">
-      {reviewsArray.map((review) => (<li className="review" key={review.link.url}>{review.display_title}</li>))}
-    </div>    
+      {reviewsArray.map((review) => (<li className='review' key={review.link.url}>{review.display_title}</li>))}<br/>
+    </div>
   )
 }
 
