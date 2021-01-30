@@ -13,8 +13,9 @@ class SearchableMovieReviewsContainer extends Component {
 			searchTerm: ''
 	}
 
-	fetchSearch = () => {
-		// console.log(URL)
+	fetchSearch = (event) => {
+		event.preventDefault()
+
 		fetch(URL + this.state.searchTerm)
 			.then(resp => resp.json())
 			.then(json=> {
@@ -25,6 +26,7 @@ class SearchableMovieReviewsContainer extends Component {
 	} 
 
 	handleTextChange = (event) => {
+
 		this.setState({
 			searchTerm: event.target.value
 		})
@@ -37,7 +39,7 @@ class SearchableMovieReviewsContainer extends Component {
 					<input type='text' onChange={this.handleTextChange} />
 					<button type='submit'>Submit</button>
 				</form>
-				<MovieReviews reviews={this.state.reviews}/>
+				<MovieReviews reviews={this.state.reviews} color='blue'/>
 			</div>
 		)
 	}
