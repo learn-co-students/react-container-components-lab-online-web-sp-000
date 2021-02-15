@@ -20,7 +20,7 @@ export default class LatestMovieReviewsContainer extends React.Component {
         return(
             <div className='latest-movie-reviews'>
                 <h2>Latest Reviews</h2>
-                <MovieReviews reviews={this.state.reviews}/>
+                {this.state.reviews !== [] ? <MovieReviews reviews={this.state.reviews}/> : null}
             </div>
         )
     }

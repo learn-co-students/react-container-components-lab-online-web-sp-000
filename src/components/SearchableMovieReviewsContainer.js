@@ -39,7 +39,7 @@ export default class SearchableMovieReviewsContainer extends React.Component {
                          />
                     <input type='submit' value='Search' />
                 </form>
-                < MovieReviews reviews={this.state.reviews} />
+                {this.state.reviews !== [] ? < MovieReviews reviews={this.state.reviews} /> : null}
             </div>
         )
     }
