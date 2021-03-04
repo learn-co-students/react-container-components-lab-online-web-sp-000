@@ -17,7 +17,6 @@ class LatestMovieReviewsContainer extends Component {
    }
 
    fetchReviews = () => {
-      // const queryURL = `${URL}&query=<${searchTerm}>`
       fetch(URL)
          .then(res => res.json())
          .then(reviewData => {

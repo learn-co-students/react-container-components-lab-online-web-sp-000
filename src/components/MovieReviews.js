@@ -4,7 +4,6 @@ import Review from './Review';
 
 const MovieReviews = ({reviews}) => (
       <div className="review-list">
-            {console.log(reviews)}
             {reviews.map(review => {
                   let reviewKey = reviews.indexOf(review)+1
                return (
