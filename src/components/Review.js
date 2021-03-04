@@ -2,7 +2,7 @@ import React from 'react';
 
 const Review = ({headline}) => (
    <div>
-      {headline}
+      <h4>{headline}</h4>
    </div>
 )
 

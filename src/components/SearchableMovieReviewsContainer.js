@@ -8,9 +8,43 @@ const URL = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?'
 
 // Code SearchableMovieReviewsContainer Here
 class SearchableMovieReviewsContainer extends Component {
+   state = {
+      reviews: [],
+      searchTerm: ''
+   };
+
+   handleSearch = event => {
+      event.preventDefault();
+      const queryURL = `${URL}&query=<${this.state.searchTerm}>`;
+      fetch(queryURL)
+         .then(res => res.json())
+         .then(searchData => {
+            searchData.num_results > 0 ?
+               this.setState((prevState) => ({
+                  ...prevState,
+                  reviews: searchData.results
+               })) : alert('No results');
+            // console.log(this.state)
+         })
+   }
+
+   handleOnChange = event => {
+      event.preventDefault();
+      this.setState({
+         searchTerm: event.target.value
+      });
+   }
+
    render() {
       return (
-         <div className="searchable-movie-reviews"></div>
+         <div className="searchable-movie-reviews">
+            <form onSubmit={this.handleSearch}>
+               <input type="text" onChange={this.handleOnChange} />
+               <input type="submit" value="Search" />
+            </form>
+            {console.log(this.state)}
+            <MovieReviews reviews={this.state.reviews} />
+         </div>
       )
    }
 }

@@ -4,13 +4,14 @@ import Review from './Review';
 
 const MovieReviews = ({reviews}) => (
       <div className="review-list">
-         {console.log(reviews)}
-         {reviews.map(review => {
-            return (
-               <Review key={reviews.indexOf(review)} 
-                       headline={review.headline} />
-            )
-         })}
+            {reviews.map(review => {
+               return (
+                  <div className="review" key={reviews.indexOf(review)+1}>
+                     <Review key={reviews.indexOf(review)+1} 
+                           headline={review.headline} />
+                  </div>
+               )
+            })}
       </div>
 )
 
