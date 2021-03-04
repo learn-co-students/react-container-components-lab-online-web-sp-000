@@ -6,7 +6,10 @@ const MovieReviews = ({reviews}) => (
       <div className="review-list">
          {console.log(reviews)}
          {reviews.map(review => {
-            return <Review headline={review.headline} />
+            return (
+               <Review key={reviews.indexOf(review)} 
+                       headline={review.headline} />
+            )
          })}
       </div>
 )
