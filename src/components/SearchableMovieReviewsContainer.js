@@ -15,7 +15,8 @@ class SearchableMovieReviewsContainer extends Component {
 
    handleSearch = event => {
       event.preventDefault();
-      const queryURL = `${URL}&query=<${this.state.searchTerm}>`;
+      const queryURL = `${URL}&query=${this.state.searchTerm}`;
+      debugger
       fetch(queryURL)
          .then(res => res.json())
          .then(searchData => {
