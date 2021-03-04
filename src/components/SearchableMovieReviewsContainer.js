@@ -16,14 +16,14 @@ class SearchableMovieReviewsContainer extends Component {
    handleSearch = event => {
       event.preventDefault();
       const queryURL = `${URL}&query=${this.state.searchTerm}`;
-      debugger
+      // debugger
       fetch(queryURL)
          .then(res => res.json())
          .then(searchData => {
             searchData.num_results > 0 ?
                this.setState((prevState) => ({
                   ...prevState,
-                  reviews: searchData.results
+                  reviews: [searchData.results[0]]
                })) : alert('No results');
             // console.log(this.state)
          })
@@ -43,7 +43,6 @@ class SearchableMovieReviewsContainer extends Component {
                <input type="text" onChange={this.handleOnChange} />
                <input type="submit" value="Search" />
             </form>
-            {console.log(this.state)}
             <MovieReviews reviews={this.state.reviews} />
          </div>
       )
