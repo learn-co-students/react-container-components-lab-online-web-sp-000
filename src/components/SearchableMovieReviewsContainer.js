@@ -16,7 +16,7 @@ class SearchableMovieReviewsContainer extends Component {
    handleSearch = event => {
       event.preventDefault();
       const queryURL = `${URL}&query=${this.state.searchTerm}`;
-      // debugger
+
       fetch(queryURL)
          .then(res => res.json())
          .then(searchData => {
@@ -25,7 +25,6 @@ class SearchableMovieReviewsContainer extends Component {
                   ...prevState,
                   reviews: [searchData.results[0]]
                })) : alert('No results');
-            // console.log(this.state)
          })
    }
 
