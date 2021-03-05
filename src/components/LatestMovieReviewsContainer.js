@@ -17,8 +17,8 @@ class LatestMovieReviewsContainer extends Component{
     }
 
     handleFetch = () =>{
-        const key = "o8PZaXfE4xiDot9IBG2nAiuX9wkVrbra"
-        fetch(`https://api.nytimes.com/svc/movies/v2/reviews/all.json?api-key=${key}`)
+        // const key = "o8PZaXfE4xiDot9IBG2nAiuX9wkVrbra"
+        fetch(URL)
         .then(resp => resp.json())
         .then(data =>{ 
             this.setState({
