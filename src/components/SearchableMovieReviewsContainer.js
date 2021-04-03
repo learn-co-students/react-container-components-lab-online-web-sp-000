@@ -41,7 +41,8 @@ class SearchableMovieReviewsContainer extends Component {
           />
         </form>
 
-        <h2>Movie Review By Search:</h2>
+        {typeof this.state.reviews === 'object' &&
+          this.state.reviews.length > 0 && <h2>Movie Review By Search:</h2>}
         <MovieReviews reviews={this.state.reviews}/>
       </div>
     )
