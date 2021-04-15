@@ -12,11 +12,11 @@
   },
   "devDependencies": {
     "jsdom": "^9.9.1",
-    "mocha": "^5.2.0",
-    "react-scripts": "^1.0.7",
+    "mocha": "^8.3.2",
+    "react-scripts": "^4.0.3",
     "react-test-renderer": "^16.0.0",
-    "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.1"
+    "webpack": "^5.33.2",
+    "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
     "babel-core": "^6.22.1",
@@ -30,7 +30,7 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.0.1",
     "fetch-mock": "^6.5.2",
-    "isomorphic-fetch": "^2.2.1",
+    "isomorphic-fetch": "^3.0.0",
     "mocha-multi": "^1.0.1",
     "node-fetch": "^2.2.0",
     "react": "^16.4.1",
