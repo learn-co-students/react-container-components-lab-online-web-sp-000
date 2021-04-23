@@ -6,7 +6,9 @@ import SearchableMovieReviewsContainer from './components/SearchableMovieReviews
 
 ReactDOM.render(
   <div className="app">
+    <div>
     <SearchableMovieReviewsContainer />
+    </div>
     <LatestMovieReviewsContainer />
   </div>,
   document.getElementById('root')
