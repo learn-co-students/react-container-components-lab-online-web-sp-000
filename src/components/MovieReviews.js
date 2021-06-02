@@ -1,10 +1,10 @@
 import React from "react";
 
-const MovieReviews = ({ movieData }) => {
-  if (movieData !== null) {
+const MovieReviews = ({ reviews }) => {
+  if (reviews !== null) {
     return (
       <ul className="review-list">
-          {movieData.map((movie, idx) => {
+          {reviews.map((movie, idx) => {
             return(
               <li key={idx} className="review">
                 <h3>{movie.display_title}</h3>

@@ -20,19 +20,16 @@ class LatestMovieReviewsContainer extends Component {
     .then(resp => resp.json())
     .then(movieData => {
       this.setState({reviews: movieData.results})
-      // console.log(movieData.results)
     })
   }
 
   render() {
     return(
       <div className="latest-movie-reviews">
-        <MovieReviews movieData={this.state.reviews}/>
+        <MovieReviews reviews={this.state.reviews}/>
       </div>
     )
-
   }
-
 }
 
 export default LatestMovieReviewsContainer;

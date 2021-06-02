@@ -28,7 +28,6 @@ class SearchableMovieReviewsContainer extends Component {
         reviews: movieData.results,
       })
     })
-
   }
 
   handleChange = (e) => {
@@ -42,7 +41,7 @@ class SearchableMovieReviewsContainer extends Component {
           <input type="text" onChange={this.handleChange}></input>
           <input type="submit"></input>
         </form>
-        <MovieReviews movieData={this.state.reviews}/>
+        <MovieReviews reviews={this.state.reviews}/>
       </div>
     )
   }
