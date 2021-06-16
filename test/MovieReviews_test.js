@@ -5,6 +5,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import MovieReviews from '../src/components/MovieReviews';
 import testReviews from './test-reviews';
 
+
 Enzyme.configure({ adapter: new Adapter() })
 
 const Noop = (props) => { return <p>Noop</p> };
@@ -42,6 +43,8 @@ describe('<MovieReviews />', () => {
   });
 
   it('should render all the reviews', () => {
+
+  
     expect(wrapper.find('.review').length).to.equal(testReviews.length);
   });
 });
