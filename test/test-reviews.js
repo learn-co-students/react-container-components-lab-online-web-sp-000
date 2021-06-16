@@ -1,4 +1,4 @@
-export default [
+let testReviews = [
   {
     "display_title": "Chicken People",
     "mpaa_rating": "",
@@ -66,3 +66,5 @@ export default [
     }
   }
 ];
+
+export default testReviews
